@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\IGOR\\\\OneDrive\\\\Pulpit\\\\Nowy folder \\(5\\)\\\\zdjecia_meble\" -Recurse -File)",
+      "Bash(Measure-Object)"
+    ]
+  }
+}

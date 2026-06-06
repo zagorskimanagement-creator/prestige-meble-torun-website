@@ -1,0 +1,425 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prestige Meble Toruń — Salon Meblowy Premium</title>
+  <meta name="description" content="Salon meblowy premium w Toruniu. Kolekcje Krysiak, Unimebel, Zakor, Fameg, Gala Collezione i innych. Galeria Wnętrz AMC, ul. Lelewela 33.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:        '#1a1f3a',
+            'navy-light':'#2a2f4a',
+            gold:        '#c9a84c',
+            'gold-light':'#d4b567',
+            cream:       '#f7f3ee',
+            'cream-dark':'#ede8e0',
+          },
+          fontFamily: { heading: ['"Playfair Display"', 'Georgia', 'serif'] },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-navy shadow-lg">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-20 items-center justify-between">
+      <a href="index.html" class="flex-shrink-0">
+        <img src="assets/logo.png" alt="Prestige Meble Toruń" class="h-14 w-14 rounded-md object-cover">
+      </a>
+
+      <div class="hidden md:flex items-center gap-1">
+        <a href="kolekcje.html"   data-page="kolekcje.html"   class="nav-link">Kolekcje</a>
+        <a href="o-nas.html"      data-page="o-nas.html"      class="nav-link">O nas</a>
+        <a href="producenci.html" data-page="producenci.html" class="nav-link">Producenci</a>
+        <a href="kontakt.html"    data-page="kontakt.html"    class="nav-link">Kontakt</a>
+        <a href="wyprzedaz.html" class="px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 border-2 border-red-500 text-red-400 hover:bg-red-500/10">Wyprzedaż</a>
+      </div>
+
+      <a href="tel:+48697705729" class="hidden md:flex items-center gap-2 bg-gold text-navy font-semibold text-sm px-4 py-2 rounded-full hover:bg-gold-light transition-colors">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Zadzwoń</span>
+        <span class="text-navy/70">697 705 729</span>
+      </a>
+
+      <button id="menu-toggle" class="md:hidden text-cream p-2" aria-label="Otwórz menu">
+        <svg id="icon-hamburger" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden bg-navy border-t border-white/10">
+    <div class="px-4 py-4 space-y-1">
+      <a href="kolekcje.html"   class="block px-4 py-3 rounded-lg text-sm font-medium text-cream/80 hover:text-gold hover:bg-navy-light transition-all">Kolekcje</a>
+      <a href="o-nas.html"      class="block px-4 py-3 rounded-lg text-sm font-medium text-cream/80 hover:text-gold hover:bg-navy-light transition-all">O nas</a>
+      <a href="producenci.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-cream/80 hover:text-gold hover:bg-navy-light transition-all">Producenci</a>
+      <a href="kontakt.html"    class="block px-4 py-3 rounded-lg text-sm font-medium text-cream/80 hover:text-gold hover:bg-navy-light transition-all">Kontakt</a>
+      <a href="wyprzedaz.html"  class="block px-4 py-3 rounded-lg text-sm font-bold text-red-400 hover:bg-navy-light transition-all">Wyprzedaż</a>
+      <a href="tel:+48697705729" class="block px-4 py-3 text-gold font-semibold text-sm">📞 697 705 729</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero-section">
+  <div class="hero-bg">
+    <img src="assets/meble-krysiak-provance-kolekcja.jpg" alt="Salon meblowy Prestige Meble Toruń" loading="eager">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <div class="fade-in">
+      <h1>Meble, które opowiadają<br><span class="text-gold">Twoją historię</span></h1>
+    </div>
+    <div class="fade-in fade-delay-2">
+      <p class="mt-6 text-cream/70 text-lg md:text-xl">Salon Premium w sercu Torunia</p>
+    </div>
+    <div class="fade-in fade-delay-3">
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="kolekcje.html" class="btn-gold text-base">Odkryj kolekcje</a>
+        <a href="kontakt.html" class="btn-gold-outline text-base">Skontaktuj się</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NASZE KOLEKCJE ===== -->
+<section class="py-20 px-4 bg-cream" id="oferta">
+  <div class="mx-auto max-w-7xl">
+    <div class="fade-in text-center">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-navy">Nasze kolekcje</h2>
+      <p class="mt-3 text-gray-500 max-w-xl mx-auto">Odkryj wyjątkowe zestawy wypoczynkowe najlepszych producentów</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card fade-in">
+        <div class="card-img aspect-video">
+          <img src="assets/meble-krysiak-cantiero-orzech-kolekcja.jpg" alt="Kolekcja Cantiero — Krysiak Meble" loading="lazy">
+        </div>
+        <div class="p-5">
+          <span class="text-xs text-gold font-medium uppercase tracking-wider">Krysiak Meble</span>
+          <h3 class="font-heading text-xl font-semibold text-navy mt-1">Cantiero</h3>
+        </div>
+      </div>
+
+      <div class="card fade-in fade-delay-1">
+        <div class="card-img aspect-video">
+          <img src="assets/unimeble-boni-kolekcja.jpg" alt="Kolekcja Boni — Unimebel" loading="lazy">
+        </div>
+        <div class="p-5">
+          <span class="text-xs text-gold font-medium uppercase tracking-wider">Unimebel</span>
+          <h3 class="font-heading text-xl font-semibold text-navy mt-1">Boni</h3>
+        </div>
+      </div>
+
+      <div class="card fade-in fade-delay-2">
+        <div class="card-img aspect-video">
+          <img src="assets/zakor-ora-kolekcja.jpg" alt="Kolekcja Ora — Zakor" loading="lazy">
+        </div>
+        <div class="p-5">
+          <span class="text-xs text-gold font-medium uppercase tracking-wider">Zakor</span>
+          <h3 class="font-heading text-xl font-semibold text-navy mt-1">Ora</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center fade-in fade-delay-3">
+      <a href="kolekcje.html" class="btn-gold">Zobacz wszystkie kolekcje →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O NAS ===== -->
+<section class="py-20 px-4 bg-cream-dark">
+  <div class="mx-auto max-w-7xl">
+    <div class="fade-in">
+      <div class="flex flex-col md:flex-row items-center gap-10">
+        <div class="md:w-1/2">
+          <img src="assets/zakor-ora-kolekcja.jpg" alt="Salon Prestige Meble Toruń — showroom" class="rounded-xl shadow-lg w-full aspect-video object-cover" loading="lazy">
+        </div>
+        <div class="md:w-1/2">
+          <h2 class="font-heading text-3xl font-bold text-navy">O nas</h2>
+          <p class="mt-4 text-gray-500 leading-relaxed">
+            Prestige Meble to salon meblowy premium w Galerii Wnętrz AMC w Toruniu. Od lat pomagamy klientom tworzyć wyjątkowe wnętrza, oferując meble najlepszych producentów.
+          </p>
+          <a href="o-nas.html" class="btn-gold mt-6 inline-flex">Dowiedz się więcej →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NASI PRODUCENCI ===== -->
+<section class="py-16 px-4 bg-cream overflow-hidden">
+  <div class="mx-auto max-w-7xl">
+    <div class="fade-in text-center">
+      <h2 class="font-heading text-2xl font-bold text-navy mb-8">Nasi Producenci</h2>
+    </div>
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-3">
+      <span class="text-gray-400 text-sm font-medium">Krysiak Meble</span>
+      <span class="text-gray-400 text-sm font-medium">Zakor</span>
+      <span class="text-gray-400 text-sm font-medium">Unimebel</span>
+      <span class="text-gray-400 text-sm font-medium">Fameg</span>
+      <span class="text-gray-400 text-sm font-medium">Manufaktura Jasienica</span>
+      <span class="text-gray-400 text-sm font-medium">Paged Meble</span>
+      <span class="text-gray-400 text-sm font-medium">Sweet Sit</span>
+      <span class="text-gray-400 text-sm font-medium">Gala Collezione</span>
+    </div>
+    <div class="mt-8 text-center fade-in fade-delay-2">
+      <a href="producenci.html" class="btn-gold-outline">Wszyscy producenci →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="py-20 px-4 bg-cream" id="faq" aria-label="Często zadawane pytania">
+  <div class="mx-auto max-w-3xl">
+    <div class="fade-in text-center">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-navy">Często zadawane pytania</h2>
+      <p class="mt-3 text-gray-500 max-w-xl mx-auto">Znajdź odpowiedzi na najczęściej zadawane pytania o nasz salon i ofertę</p>
+    </div>
+
+    <div class="mt-12 space-y-3">
+      <div class="faq-item fade-in">
+        <button class="faq-toggle" aria-expanded="false">
+          <span class="faq-q">Czy mogę zamówić meble w innym kolorze niż na ekspozycji?</span>
+          <svg class="faq-icon w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="faq-a-0" class="faq-answer">Tak, zdecydowanie! Większość naszych kolekcji dostępna jest w szerokiej gamie kolorów, tkanin i wykończeń. Dysponujemy próbnikami materiałów wszystkich producentów, dzięki czemu możesz dokładnie dobrać kolor i fakturę do swojego wnętrza. Nasi doradcy z przyjemnością pomogą Ci wybrać najlepsze rozwiązanie — zapraszamy do salonu.</div>
+      </div>
+
+      <div class="faq-item fade-in fade-delay-1">
+        <button class="faq-toggle" aria-expanded="false">
+          <span class="faq-q">Jak długo trwa realizacja zamówienia indywidualnego?</span>
+          <svg class="faq-icon w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="faq-a-1" class="faq-answer">Czas realizacji zależy od producenta i specyfikacji zamówienia. Standardowo meble szyte na indywidualne zamówienie dostarczamy w ciągu 8–14 tygodni. Przy popularnych modelach termin bywa krótszy. O szacowanym czasie realizacji informujemy przy składaniu zamówienia.</div>
+      </div>
+
+      <div class="faq-item fade-in fade-delay-2">
+        <button class="faq-toggle" aria-expanded="false">
+          <span class="faq-q">Czy salon zapewnia dostawę i montaż?</span>
+          <svg class="faq-icon w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="faq-a-2" class="faq-answer">Tak, oferujemy kompleksową usługę dostawy i montażu mebli na terenie Torunia i okolic. Nasz zespół zadba o bezpieczny transport oraz profesjonalny montaż bezpośrednio w Twoim domu. Szczegóły dotyczące kosztów i terminów ustalamy indywidualnie przy zakupie.</div>
+      </div>
+
+      <div class="faq-item fade-in fade-delay-3">
+        <button class="faq-toggle" aria-expanded="false">
+          <span class="faq-q">Jakie marki mebli są dostępne w salonie?</span>
+          <svg class="faq-icon w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="faq-a-3" class="faq-answer">W Prestige Meble Toruń znajdziesz kolekcje renomowanych polskich i europejskich producentów: Krysiak Meble, Unimebel, Zakor, Fameg, Gala Collezione, Sweet Sit, Manufaktura Jasienica oraz Paged Meble. Każda marka wyróżnia się wyjątkową jakością wykonania i oryginalnym wzornictwem.</div>
+      </div>
+
+      <div class="faq-item fade-in fade-delay-4">
+        <button class="faq-toggle" aria-expanded="false">
+          <span class="faq-q">Czy można obejrzeć meble przed zakupem?</span>
+          <svg class="faq-icon w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="faq-a-4" class="faq-answer">Oczywiście! Nasz salon wyposażony jest w bogatą ekspozycję, gdzie można bezpośrednio przetestować komfort siedzenia i leżenia. Zapraszamy do Galerii Wnętrz AMC, ul. Lelewela 33 w Toruniu (I piętro). Jesteśmy czynni pon–sob 10:00–20:00 oraz w niedzielę 10:00–18:00.</div>
+      </div>
+
+      <div class="faq-item fade-in fade-delay-5">
+        <button class="faq-toggle" aria-expanded="false">
+          <span class="faq-q">Czy wystawiacie faktury VAT?</span>
+          <svg class="faq-icon w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="faq-a-5" class="faq-answer">Tak, wystawiamy faktury VAT zarówno dla osób prywatnych, jak i firm. Jeśli potrzebujesz faktury, poinformuj nas o tym podczas zakupu lub przy składaniu zamówienia.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KONTAKT SECTION ===== -->
+<section class="py-20 px-4 bg-cream-dark" id="kontakt">
+  <div class="mx-auto max-w-7xl">
+    <div class="fade-in text-center">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-navy">Skontaktuj się z nami</h2>
+      <p class="mt-3 text-gray-500 max-w-xl mx-auto">Masz pytanie? Napisz do nas lub odwiedź salon w Galerii Wnętrz AMC</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <!-- Form -->
+      <div class="bg-white rounded-xl shadow-md p-8 fade-in">
+        <h3 class="font-heading text-xl font-semibold text-navy mb-6">Wyślij wiadomość</h3>
+        <form id="contact-form" class="space-y-5" novalidate>
+          <div>
+            <label for="form-name" class="block text-sm font-medium text-navy mb-1.5">Imię i nazwisko</label>
+            <input type="text" id="form-name" name="name" placeholder="Jan Kowalski" required class="form-input" autocomplete="name">
+          </div>
+          <div>
+            <label for="form-phone" class="block text-sm font-medium text-navy mb-1.5">Telefon</label>
+            <input type="tel" id="form-phone" name="phone" placeholder="+48 000 000 000" required class="form-input" autocomplete="tel">
+          </div>
+          <div>
+            <label for="form-message" class="block text-sm font-medium text-navy mb-1.5">Wiadomość</label>
+            <textarea id="form-message" name="message" rows="4" placeholder="W czym możemy pomóc?" required class="form-input"></textarea>
+          </div>
+          <button type="submit" class="btn-gold w-full">Wyślij wiadomość</button>
+        </form>
+      </div>
+
+      <!-- Map + contact info -->
+      <div class="flex flex-col gap-6 fade-in fade-delay-2">
+        <div class="rounded-xl overflow-hidden shadow-md flex-1 min-h-64">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9599.05292300931!2d18.6068876778101!3d53.02461913029623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4703349a6c377f8f%3A0x2205f45c4068d696!2sSalon%20Premium%20Prestige%20Meble!5e0!3m2!1spl!2spl!4v1780157494398!5m2!1spl!2spl"
+            width="100%" height="280" style="border:0; display:block;" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lokalizacja Prestige Meble Toruń"></iframe>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 space-y-4">
+          <div class="flex items-start gap-3">
+            <div class="contact-icon">
+              <svg class="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-navy">Galeria Wnętrz AMC, I piętro</p>
+              <p class="text-sm text-gray-500">ul. Lelewela 33, 87-100 Toruń</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="contact-icon">
+              <svg class="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <a href="tel:+48697705729" class="text-sm font-medium text-gold hover:text-navy transition-colors block">+48 697 705 729</a>
+              <a href="tel:+48603180025" class="text-sm font-medium text-gold hover:text-navy transition-colors block">+48 603 180 025</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="contact-icon">
+              <svg class="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div class="text-sm text-gray-500">
+              <p>Pon – Sob: 10:00 – 20:00</p>
+              <p>Niedziela: 10:00 – 18:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA NAVY ===== -->
+<section class="py-16 px-4 bg-navy">
+  <div class="mx-auto max-w-3xl text-center fade-in">
+    <h2 class="font-heading text-3xl font-bold text-cream">Zapraszamy do salonu w Toruniu</h2>
+    <p class="mt-3 text-cream/60">Galeria Wnętrz AMC, ul. Joachima Lelewela 33 — I piętro</p>
+    <a href="kontakt.html" class="btn-gold mt-8 inline-flex">Skontaktuj się</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-navy text-cream">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-center py-10 border-b border-cream/10">
+      <img src="assets/logo.png" alt="Prestige Meble Toruń" class="h-20 w-20 rounded-lg object-cover">
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-12">
+      <div>
+        <h3 class="font-heading text-lg font-semibold text-gold mb-4">Kontakt i godziny</h3>
+        <address class="not-italic text-cream/70 text-sm leading-relaxed">
+          Galeria Wnętrz AMC, I piętro<br>ul. Lelewela 33<br>87-100 Toruń
+        </address>
+        <div class="mt-4 text-cream/70 text-sm leading-relaxed">
+          <p>Pon – Sob: 10:00 – 20:00</p>
+          <p>Niedziela: 10:00 – 18:00</p>
+        </div>
+        <div class="mt-4 flex flex-col gap-1">
+          <a href="tel:+48697705729" class="text-gold font-semibold text-sm hover:text-gold-light transition-colors">+48 697 705 729</a>
+          <a href="tel:+48603180025" class="text-gold font-semibold text-sm hover:text-gold-light transition-colors">+48 603 180 025</a>
+          <a href="mailto:torun.prestigemeble@wp.pl" class="text-gold/80 text-xs hover:text-gold transition-colors mt-1">torun.prestigemeble@wp.pl</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-heading text-lg font-semibold text-gold mb-4">Nawigacja</h3>
+        <nav class="flex flex-col gap-2">
+          <a href="index.html"       class="text-cream/70 text-sm hover:text-gold transition-colors">Strona główna</a>
+          <a href="kolekcje.html"    class="text-cream/70 text-sm hover:text-gold transition-colors">Kolekcje</a>
+          <a href="o-nas.html"       class="text-cream/70 text-sm hover:text-gold transition-colors">O nas</a>
+          <a href="producenci.html"  class="text-cream/70 text-sm hover:text-gold transition-colors">Producenci</a>
+          <a href="kontakt.html"     class="text-cream/70 text-sm hover:text-gold transition-colors">Kontakt</a>
+          <a href="wyprzedaz.html"   class="text-red-400 text-sm hover:text-red-300 transition-colors mt-1 font-semibold">Wyprzedaż</a>
+        </nav>
+      </div>
+
+      <div>
+        <h3 class="font-heading text-lg font-semibold text-gold mb-4">Producenci</h3>
+        <div class="flex flex-col gap-1.5">
+          <a href="https://www.meblekrysiak.pl"       target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold transition-colors">Krysiak Meble</a>
+          <a href="https://www.zakor.pl"               target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold transition-colors">Zakor</a>
+          <a href="https://www.unimebel.pl"            target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold transition-colors">Unimebel</a>
+          <a href="https://www.fameg.pl"               target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold transition-colors">Fameg</a>
+          <a href="https://www.manufakturajasienica.pl" target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold transition-colors">Manufaktura Jasienica</a>
+          <a href="https://www.paged.pl"               target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold transition-colors">Paged Meble</a>
+          <a href="https://www.sweetsit.pl"            target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold transition-colors">Sweet Sit</a>
+          <a href="https://www.galacollezione.com"      target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold transition-colors">Gala Collezione</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-heading text-lg font-semibold text-gold mb-4">Obserwuj nas</h3>
+        <div class="flex gap-3">
+          <a href="https://www.facebook.com/profile.php?id=prestige.meble.torun" target="_blank" rel="noopener" aria-label="Facebook Prestige Meble Toruń"
+             class="flex items-center justify-center w-10 h-10 rounded-full bg-navy-light text-cream hover:bg-gold hover:text-navy transition-all">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/prestige.meble.torun" target="_blank" rel="noopener" aria-label="Instagram Prestige Meble Toruń"
+             class="flex items-center justify-center w-10 h-10 rounded-full bg-navy-light text-cream hover:bg-gold hover:text-navy transition-all">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+        <p class="mt-6 text-cream/50 text-xs leading-relaxed">
+          Prestige Meble Toruń<br>Galeria Wnętrz AMC<br>ul. Lelewela 33, 87-100 Toruń
+        </p>
+      </div>
+    </div>
+
+    <div class="border-t border-cream/10 py-6 text-center">
+      <p class="text-cream/40 text-xs">© <span id="year"></span> Prestige Meble Toruń | Wszystkie prawa zastrzeżone</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div id="cookie-banner" role="region" aria-label="Informacja o plikach cookie">
+  <p>Ta strona używa plików cookie w celu poprawy doświadczeń użytkowników. Korzystając ze strony, akceptujesz naszą <a href="#" class="underline text-gold hover:text-gold-light">politykę prywatności</a>.</p>
+  <button id="accept-cookies">Akceptuję</button>
+</div>
+
+<!-- ===== WHATSAPP ===== -->
+<a id="whatsapp-btn" href="https://wa.me/48697705729" target="_blank" rel="noopener" aria-label="Napisz na WhatsApp">
+  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="script.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name    = document.getElementById('form-name').value;
+    var phone   = document.getElementById('form-phone').value;
+    var message = document.getElementById('form-message').value;
+    var subject = encodeURIComponent('Zapytanie ze strony — Prestige Meble Toruń');
+    var body    = encodeURIComponent('Imię: ' + name + '\nTelefon: ' + phone + '\n\nWiadomość:\n' + message);
+    window.location.href = 'mailto:torun.prestigemeble@wp.pl?subject=' + subject + '&body=' + body;
+  });
+</script>
+</body>
+</html>

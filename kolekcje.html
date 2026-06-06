@@ -1,0 +1,529 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kolekcje — Prestige Meble Toruń</title>
+  <meta name="description" content="Odkryj nasze kolekcje mebli premium: Krysiak, Unimebel, Zakor, Fameg, Gala Collezione, Sweet Sit i więcej. Salon meblowy Toruń.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:        '#1a1f3a',
+            'navy-light':'#2a2f4a',
+            gold:        '#c9a84c',
+            'gold-light':'#d4b567',
+            cream:       '#f7f3ee',
+            'cream-dark':'#ede8e0',
+          },
+          fontFamily: { heading: ['"Playfair Display"', 'Georgia', 'serif'] },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-navy shadow-lg">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-20 items-center justify-between">
+      <a href="index.html" class="flex-shrink-0">
+        <img src="assets/logo.png" alt="Prestige Meble Toruń" class="h-14 w-14 rounded-md object-cover">
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="kolekcje.html"   data-page="kolekcje.html"   class="nav-link">Kolekcje</a>
+        <a href="o-nas.html"      data-page="o-nas.html"      class="nav-link">O nas</a>
+        <a href="producenci.html" data-page="producenci.html" class="nav-link">Producenci</a>
+        <a href="kontakt.html"    data-page="kontakt.html"    class="nav-link">Kontakt</a>
+        <a href="wyprzedaz.html" class="px-5 py-2 rounded-full text-sm font-bold border-2 border-red-500 text-red-400 hover:bg-red-500/10 transition-all">Wyprzedaż</a>
+      </div>
+      <a href="tel:+48697705729" class="hidden md:flex items-center gap-2 bg-gold text-navy font-semibold text-sm px-4 py-2 rounded-full hover:bg-gold-light transition-colors">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Zadzwoń</span><span class="text-navy/70">697 705 729</span>
+      </a>
+      <button id="menu-toggle" class="md:hidden text-cream p-2" aria-label="Otwórz menu">
+        <svg id="icon-hamburger" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-navy border-t border-white/10">
+    <div class="px-4 py-4 space-y-1">
+      <a href="kolekcje.html"   class="block px-4 py-3 rounded-lg text-sm font-medium text-cream/80 hover:text-gold hover:bg-navy-light transition-all">Kolekcje</a>
+      <a href="o-nas.html"      class="block px-4 py-3 rounded-lg text-sm font-medium text-cream/80 hover:text-gold hover:bg-navy-light transition-all">O nas</a>
+      <a href="producenci.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-cream/80 hover:text-gold hover:bg-navy-light transition-all">Producenci</a>
+      <a href="kontakt.html"    class="block px-4 py-3 rounded-lg text-sm font-medium text-cream/80 hover:text-gold hover:bg-navy-light transition-all">Kontakt</a>
+      <a href="wyprzedaz.html"  class="block px-4 py-3 rounded-lg text-sm font-bold text-red-400 hover:bg-navy-light transition-all">Wyprzedaż</a>
+      <a href="tel:+48697705729" class="block px-4 py-3 text-gold font-semibold text-sm">📞 697 705 729</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== PAGE HERO (dynamically updated) ===== -->
+<div id="page-hero" class="page-hero">
+  <div class="fade-in">
+    <h1 id="hero-title" class="font-heading">Nasze Kolekcje</h1>
+    <p id="hero-subtitle">Odkryj wyjątkowe zestawy wypoczynkowe najlepszych producentów</p>
+    <nav id="breadcrumb" class="breadcrumb">
+      <a href="index.html">Strona główna</a>
+      <span>/</span>
+      <span>Kolekcje</span>
+    </nav>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main id="main-content" class="py-16 px-4 bg-cream">
+  <div class="mx-auto max-w-7xl" id="content-container">
+    <!-- JS renders here -->
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-navy text-cream">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-center py-10 border-b border-cream/10">
+      <img src="assets/logo.png" alt="Prestige Meble Toruń" class="h-20 w-20 rounded-lg object-cover">
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-12">
+      <div>
+        <h3 class="font-heading text-lg font-semibold text-gold mb-4">Kontakt i godziny</h3>
+        <address class="not-italic text-cream/70 text-sm leading-relaxed">Galeria Wnętrz AMC, I piętro<br>ul. Lelewela 33<br>87-100 Toruń</address>
+        <div class="mt-4 text-cream/70 text-sm"><p>Pon – Sob: 10:00 – 20:00</p><p>Niedziela: 10:00 – 18:00</p></div>
+        <div class="mt-4 flex flex-col gap-1">
+          <a href="tel:+48697705729" class="text-gold font-semibold text-sm hover:text-gold-light">+48 697 705 729</a>
+          <a href="tel:+48603180025" class="text-gold font-semibold text-sm hover:text-gold-light">+48 603 180 025</a>
+          <a href="mailto:torun.prestigemeble@wp.pl" class="text-gold/80 text-xs hover:text-gold mt-1">torun.prestigemeble@wp.pl</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="font-heading text-lg font-semibold text-gold mb-4">Nawigacja</h3>
+        <nav class="flex flex-col gap-2">
+          <a href="index.html"       class="text-cream/70 text-sm hover:text-gold transition-colors">Strona główna</a>
+          <a href="kolekcje.html"    class="text-cream/70 text-sm hover:text-gold transition-colors">Kolekcje</a>
+          <a href="o-nas.html"       class="text-cream/70 text-sm hover:text-gold transition-colors">O nas</a>
+          <a href="producenci.html"  class="text-cream/70 text-sm hover:text-gold transition-colors">Producenci</a>
+          <a href="kontakt.html"     class="text-cream/70 text-sm hover:text-gold transition-colors">Kontakt</a>
+          <a href="wyprzedaz.html"   class="text-red-400 text-sm hover:text-red-300 font-semibold mt-1">Wyprzedaż</a>
+        </nav>
+      </div>
+      <div>
+        <h3 class="font-heading text-lg font-semibold text-gold mb-4">Producenci</h3>
+        <div class="flex flex-col gap-1.5">
+          <a href="https://www.meblekrysiak.pl" target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold">Krysiak Meble</a>
+          <a href="https://www.zakor.pl" target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold">Zakor</a>
+          <a href="https://www.unimebel.pl" target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold">Unimebel</a>
+          <a href="https://www.fameg.pl" target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold">Fameg</a>
+          <a href="https://www.manufakturajasienica.pl" target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold">Manufaktura Jasienica</a>
+          <a href="https://www.paged.pl" target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold">Paged Meble</a>
+          <a href="https://www.sweetsit.pl" target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold">Sweet Sit</a>
+          <a href="https://www.galacollezione.com" target="_blank" rel="noopener" class="text-gold/60 text-xs hover:text-gold">Gala Collezione</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="font-heading text-lg font-semibold text-gold mb-4">Obserwuj nas</h3>
+        <div class="flex gap-3">
+          <a href="https://www.facebook.com/profile.php?id=prestige.meble.torun" target="_blank" rel="noopener" aria-label="Facebook" class="flex items-center justify-center w-10 h-10 rounded-full bg-navy-light text-cream hover:bg-gold hover:text-navy transition-all">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/prestige.meble.torun" target="_blank" rel="noopener" aria-label="Instagram" class="flex items-center justify-center w-10 h-10 rounded-full bg-navy-light text-cream hover:bg-gold hover:text-navy transition-all">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-cream/10 py-6 text-center">
+      <p class="text-cream/40 text-xs">© <span id="year"></span> Prestige Meble Toruń | Wszystkie prawa zastrzeżone</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== LIGHTBOX ===== -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Powiększone zdjęcie">
+  <button id="lightbox-close" aria-label="Zamknij">×</button>
+  <img id="lightbox-img" src="" alt="Powiększone zdjęcie">
+</div>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div id="cookie-banner" role="region" aria-label="Informacja o plikach cookie">
+  <p>Ta strona używa plików cookie. Korzystając ze strony, akceptujesz naszą <a href="#" class="underline text-gold">politykę prywatności</a>.</p>
+  <button id="accept-cookies">Akceptuję</button>
+</div>
+
+<!-- ===== WHATSAPP ===== -->
+<a id="whatsapp-btn" href="https://wa.me/48697705729" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="script.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ===== DATA ===== */
+var B = 'zdjecia_meble';
+var CONTAIN = ['krysiak','zakor','fameg','manufaktura-jasienica','paged'];
+
+var producenci = [
+  {
+    slug:'krysiak', nazwa:'Krysiak Meble',
+    opis:'Polskie meble tapicerowane szyte na miarę Twoich potrzeb.',
+    okladka: B+'/1_Krysiak_Meble/cantiero/CANTIERO_aranzI_DSC_6857v2-1.jpg',
+    kolekcje:[
+      { slug:'cantiero', nazwa:'Cantiero',
+        okladka: B+'/1_Krysiak_Meble/cantiero/CANTIERO_aranzI_DSC_6857v2-1.jpg',
+        zdjecia: ['CAN.011.min__3.jpg','CAN.030.03.min__2.jpg','CAN.031.min__4.jpg','CAN.041.min__2.jpg','CAN.050.min__3.jpg','CAN.070.min_.jpg','CAN.073-e1742292815166_5.jpg','CAN.075.min_.jpg','CAN.076.03.min_-2_1.jpg','CANTIERO_aranzII_STOL_DSC_6993.jpg','CANTIERO_aranzI_DSC_6857v2-1.jpg','CANTIERO_polaranzII_DSC_7209.jpg','CANTIERO_polaranzI_DSC_6881.jpg','CANTIERO_polaranz_stolik_DSC_7259.jpg','DSC_6890.jpg','DSC_6939.jpg','DSC_7009-1.jpg','DSC_7088.jpg','DSC_7131.jpg','Orzech-lakierowany.png'].map(function(f){ return B+'/1_Krysiak_Meble/cantiero/'+f; })
+      },
+      { slug:'cantiero-dab', nazwa:'Cantiero Dąb Karmelowy',
+        okladka: B+'/1_Krysiak_Meble/cantiero-dab-karmelowy/CAN.010.13.min__1.jpg',
+        zdjecia: ['CAN.010.13.min__1.jpg','CAN.011.13.min__3.jpg','CAN.030.13.jpg','CAN.031.13_5.jpg','CAN.041.13.min__3.jpg','CAN.070.13.min__1.jpg','CAN.073.13.min__4.jpg','CAN.075.13.min__2.jpg','CAN.076.13.jpg','CANTIERO_aranz.jpg','CANTIERO_jasne_aranz_III_DSC_2798.jpg','CANTIERO_jasne_polaranz_I_DSC_2674.jpg','Dab-karmelowy-e1739953311442_1.jpg','DSC_2611.jpg','DSC_2661.jpg','DSC_2731.jpg','DSC_2753.jpg','DSC_2774.jpg','DSC_2928.jpg','Mona.115.min_-1_3.jpg'].map(function(f){ return B+'/1_Krysiak_Meble/cantiero-dab-karmelowy/'+f; })
+      },
+      { slug:'granada', nazwa:'Granada',
+        okladka: B+'/1_Krysiak_Meble/granada/granada-aranz-1-antracyt.jpg',
+        zdjecia: ['ARANZ_ciemny_akcept_drewno.jpg','DSC_3884_KrysiakMEBLE-e1732868640219.jpg','DSC_4434_drewno-poprawne.jpg','GRA-010-05min-1_2.jpg','GRA-030-05-min.jpg','GRA-032-05-min.jpg','GRA-040-05-min.jpg','GRA-050-05.min_-1.jpg','GRA-064-05-min_3.jpg','GRA-070-05-min.jpg','GRA-075-11-min_4.jpg','GRA-076-05-min.jpg','granada-aranz-1-antracyt.jpg','granada-aranz-3-antracyt.jpg','granada-polaranz-1-antracyt.jpg','granada-polaranz-2-antracyt.jpg','granada-polaranz-3-antracyt.jpg'].map(function(f){ return B+'/1_Krysiak_Meble/granada/'+f; })
+      },
+      { slug:'granada-szarosc', nazwa:'Granada Szarość Pustyni',
+        okladka: B+'/1_Krysiak_Meble/granada-szarosc-pustyni/09_szarosc_pustyni_1.jpg',
+        zdjecia: ['09_szarosc_pustyni_1.jpg','DSC_4390_drewno-1-e1732882660479.jpg','GRA-010-09min-1_4.jpg','GRA-030-09-min.jpg','GRA-031-09-min_4.jpg','GRA-040-09-min_3.jpg','GRA-050-09.min__3.jpg','GRA-075-09-min_1.jpg','GRA-076-09-min_2.jpg','granada-polaranz-1.jpg','granada-polaranz-2.jpg','granada-polaranz-3.jpg'].map(function(f){ return B+'/1_Krysiak_Meble/granada-szarosc-pustyni/'+f; })
+      },
+      { slug:'monaco', nazwa:'Monaco',
+        okladka: B+'/1_Krysiak_Meble/monaco/MONACO_aranz_.jpg',
+        zdjecia: ['DSC_1168_v2_1.jpg','DSC_1349.jpg','DSC_2004.jpg','M94_1.jpg','M96N_C_8.jpg','Mona.040.min__3.jpg','Mona.060.min_.jpg','Mona.068.min__5.jpg','Mona.069.min_.jpg','Mona.070.min_-1.jpg','mona.075.min_-1.jpg','MONACO_aranz_.jpg','MONACO_aranz_stol.jpg','MONACO_komoda_HR.jpg','MONTE_aranz_I_DSC_1462v4.jpg','MONTE_aranz_II_DSC_1593.jpg','MONTE_aranz_III_DSC_1697v2.jpg'].map(function(f){ return B+'/1_Krysiak_Meble/monaco/'+f; })
+      },
+      { slug:'provance', nazwa:'Provance',
+        okladka: B+'/1_Krysiak_Meble/provance/AB0_4086.jpg',
+        zdjecia: ['AB0_4086.jpg','AB0_4130.jpg','AB0_4610_1.jpg','AB0_5582_1.jpg','AB0_5846_wyprostowane.jpg','AB0_6710.jpg','AB0_7813.png','pro.010__miniaturka_png2_3.png','pro.030_miniaturka_png_1.png','pro.040_miniaturka_jpg_1.png','provance-02.png','provance-03.png','provance-05_3.png','provance-06_2.png','provance-09_1.png','provance-16_2.png','provance-21.png'].map(function(f){ return B+'/1_Krysiak_Meble/provance/'+f; })
+      },
+      { slug:'verano', nazwa:'Verano',
+        okladka: B+'/1_Krysiak_Meble/verano/ARANZ-Glowny-DSC_6268.jpg',
+        zdjecia: ['ARANZ-Glowny-DSC_6268.jpg','DSC_5396.jpg','DSC_5502.jpg','DSC_6212.jpg','VER-010-15-min_3.jpg','VER-030-15-min_1.jpg','VER-040-15-min_1.jpg','VER-050-15-min_4.jpg','VERANO_aranzI_DSC_5367_3.jpg','VERANO_aranz_II_DSC_5495_przerobka_final.jpg','VERANO_polaranzIII_DSC_5769.jpg','VERANO_stol_aranz_DSC_6183v2.jpg'].map(function(f){ return B+'/1_Krysiak_Meble/verano/'+f; })
+      },
+    ]
+  },
+  {
+    slug:'zakor', nazwa:'Zakor',
+    opis:'Meble do jadalni i salonu łączące styl z trwałością.',
+    okladka: B+'/2_Zakor/limera/LIMERA1_2.jpg',
+    kolekcje:[
+      { slug:'limera', nazwa:'Limera',
+        okladka: B+'/2_Zakor/limera/LIMERA1_2.jpg',
+        zdjecia: ['limera-barek1.jpg','limera-barek2.jpg','limera-bufet.jpg','limera-komoda2.jpg','limera-komoda3.jpg','limera-rtv-duza.jpg','limera-rtv-mala.jpg','limera-witryna1.jpg','limera-witryna2.jpg','LIMERA1_2.jpg','LIMERA3_3.jpg','LIMERA423_4.jpg','LIMERA4_1.jpg','OlejBIANCO.jpg','OlejCLASSIC.jpg','OlejNATURA.jpg','OlejNOCHE.jpg','OlejPIASKOWY.jpg','OlejROSSO.jpg'].map(function(f){ return B+'/2_Zakor/limera/'+f; })
+      },
+      { slug:'malaren', nazwa:'Malaren',
+        okladka: B+'/2_Zakor/malaren/MALAREN1.jpg',
+        zdjecia: ['malaren-barek.jpg','malaren-bufet.jpg','malaren-komoda1.jpg','malaren-komoda2.jpg','malaren-komoda3.jpg','malaren-rtv-duza.jpg','malaren-rtv-mala.jpg','malaren-witryna1.jpg','malaren-witryna2.jpg','MALAREN1.jpg','MALAREN2.jpg','MALAREN3_2.jpg'].map(function(f){ return B+'/2_Zakor/malaren/'+f; })
+      },
+      { slug:'ora', nazwa:'Ora',
+        okladka: B+'/2_Zakor/ora/Ora1m.jpg',
+        zdjecia: ['ORA-slajd_4.jpg','ORA-TVm_1.jpg','Ora1m.jpg','ORA1wys2_1.jpg','Ora2m_4.jpg','ORA2wys3_2.jpg','Ora3m_1.jpg'].map(function(f){ return B+'/2_Zakor/ora/'+f; })
+      },
+      { slug:'stol-lt-2312', nazwa:'Stół LT-2312',
+        okladka: B+'/2_Zakor/stol-lt-2312/LT2312_AI_v4_HRwww_1.jpg',
+        zdjecia: ['2318.jpg','2319bez.jpg','limera-stol.jpg','lt-2312_4.jpg','LT-2313-www2.jpg','LT-2322.jpg','LT2312_AI_v4_HRwww_1.jpg','LT2315.jpg','LT2317-1.jpg','LT2323_aranz_I_HRwww.jpg'].map(function(f){ return B+'/2_Zakor/stol-lt-2312/'+f; })
+      },
+      { slug:'stol-lt-2314', nazwa:'Stół LT-2314',
+        okladka: B+'/2_Zakor/stol-lt-2314/LT2314_aranz_I_www_1.jpg',
+        zdjecia: ['LT2314-rozlozony.jpg','LT2314_2.jpg','LT2314_aranz_I_www_1.jpg','LT2314_aranz_II_www_6.jpg'].map(function(f){ return B+'/2_Zakor/stol-lt-2314/'+f; })
+      },
+      { slug:'stol-lt-2316', nazwa:'Stół LT-2316',
+        okladka: B+'/2_Zakor/stol-lt-2316/LT_2316_A_I_4.jpg',
+        zdjecia: ['LT2316-1.jpg','LT2316-3_1.jpg','LT_2316_A_I_4.jpg','LT_2316_A_II_5.jpg'].map(function(f){ return B+'/2_Zakor/stol-lt-2316/'+f; })
+      },
+      { slug:'stol-lt-2324', nazwa:'Stół LT-2324',
+        okladka: B+'/2_Zakor/stol-lt-2324/LT2324_aranz_I_HRwww_3.jpg',
+        zdjecia: [B+'/2_Zakor/stol-lt-2324/LT2324_aranz_I_HRwww_3.jpg',B+'/2_Zakor/stol-lt-2324/LT2324_aranz_II_HRwww_6.jpg']
+      },
+    ]
+  },
+  {
+    slug:'unimebel', nazwa:'Unimebel',
+    opis:'Solidne meble tapicerowane z wieloletnią tradycją.',
+    okladka: B+'/3_Unimebel/boretto/boretto-1.jpg',
+    kolekcje:[
+      { slug:'bondi', nazwa:'Bondi',
+        okladka: B+'/3_Unimebel/bondi/SLAJD1-1-scaled.jpg',
+        zdjecia: ['FOTEL-1-scaled.jpg','FOTEL1-scaled.jpg','FOTEL2-scaled.jpg','fotel3-scaled.jpg','fotel4-scaled.jpg','fotel_bujany-scaled.jpg','pufa-scaled.jpg','SLAJD-3-scaled.jpg','SLAJD1-1-scaled.jpg','WERSALKA-1-scaled.jpg','WERSALKA1-scaled.jpg','WERSALKA_ROZL-scaled.jpg'].map(function(f){ return B+'/3_Unimebel/bondi/'+f; })
+      },
+      { slug:'boretto', nazwa:'Boretto',
+        okladka: B+'/3_Unimebel/boretto/boretto-1.jpg',
+        zdjecia: ['boretto-1.jpg','boretto-2.jpg','boretto-a1.jpg','boretto-a2.jpg','boretto-a3.jpg','boretto-f1.jpg','boretto-f2.jpg','boretto-f3.jpg','boretto-fb1.jpg','boretto-fb2.jpg','boretto-s1.jpg','boretto-s2.jpg','Unimebel-09-03-23-1.jpg'].map(function(f){ return B+'/3_Unimebel/boretto/'+f; })
+      },
+      { slug:'figaro', nazwa:'Figaro',
+        okladka: B+'/3_Unimebel/figaro/SLAJD-9-scaled.jpg',
+        zdjecia: ['fotel-5-scaled.jpg','SLAJD-9-scaled.jpg','sofo_naronik_roz-scaled.jpg','sofo_naroznik-scaled.jpg','sofo_naroznik1-scaled.jpg','wersalka-5-scaled.jpg'].map(function(f){ return B+'/3_Unimebel/figaro/'+f; })
+      },
+      { slug:'max-xix', nazwa:'Max XIX',
+        okladka: B+'/3_Unimebel/kolekcja-max-xix/SLAJD-30-scaled.jpg',
+        zdjecia: ['fotel-28-scaled.jpg','SLAJD-30-scaled.jpg','wersalka-22-scaled.jpg','wersalka_roz-16-scaled.jpg'].map(function(f){ return B+'/3_Unimebel/kolekcja-max-xix/'+f; })
+      },
+      { slug:'lagossa', nazwa:'Lagossa',
+        okladka: B+'/3_Unimebel/lagossa-nowoczesne-meble-tapicerowane-unimebel/SLAJD1-scaled.jpg',
+        zdjecia: ['FOTEL-scaled.jpg','SLAJD-2-scaled.jpg','SLAJD1-scaled.jpg','SOFA-scaled.jpg','WERSALKA-scaled.jpg','WERSALKA_ROZ-scaled.jpg'].map(function(f){ return B+'/3_Unimebel/lagossa-nowoczesne-meble-tapicerowane-unimebel/'+f; })
+      },
+      { slug:'marino', nazwa:'Marino',
+        okladka: B+'/3_Unimebel/marino/0000_MARINO_gif_33936.jpg',
+        zdjecia: ['0000_MARINO_gif_33936.jpg','0000_MARINO_gif_33980.jpg','0001_MARINO_gif_33977.jpg','0001_MARINO_gif_33979.jpg','0002_MARINO_gif_33932.jpg','0002_MARINO_gif_33950.jpg','0004_MARINO_gif_33927.jpg','0005_MARINO_gif_33918.jpg','0006_MARINO_gif_33894.jpg','0007_MARINO_gif_33889.jpg'].map(function(f){ return B+'/3_Unimebel/marino/'+f; })
+      },
+      { slug:'mobilo', nazwa:'Mobilo',
+        okladka: B+'/3_Unimebel/mobilo/SLAJD-14-scaled.jpg',
+        zdjecia: ['bok_B-scaled.jpg','fotel-9-scaled.jpg','SLAJD-14-scaled.jpg','slajd1-5-scaled.jpg','slajd2-2-scaled.jpg','wersalka-8-scaled.jpg','wersalka_1-scaled.jpg','wersalka_roz-6-scaled.jpg'].map(function(f){ return B+'/3_Unimebel/mobilo/'+f; })
+      },
+      { slug:'oliwia-e', nazwa:'Oliwia E',
+        okladka: B+'/3_Unimebel/oliwia-e/SLAJD-25-scaled.jpg',
+        zdjecia: ['fotel1-6-scaled.jpg','SLAJD-25-scaled.jpg','sofa-10-scaled.jpg','Unimeble-13-01-23_4.jpg','Unimeble-13-01-23_5.jpg','Unimeble-13-01-23_6.jpg'].map(function(f){ return B+'/3_Unimebel/oliwia-e/'+f; })
+      },
+      { slug:'tuli', nazwa:'Tuli',
+        okladka: B+'/3_Unimebel/tuli/tuli-I-1.jpg',
+        zdjecia: ['tuli-I-1.jpg','tuli-I-2.jpg','tuli-I-3.jpg','tuli-V-1.jpg','Tuli-v.jpg','tuli04-scaled.jpg','tuli04_roz-scaled.jpg','tuliM.jpg','tuliM1.jpg','tuli_03-scaled.jpg','tuli_06-scaled.jpg','tuli_09-scaled.jpg','tuli_e-scaled.jpg','tuli_g-scaled.jpg','tuli_h-scaled.jpg'].map(function(f){ return B+'/3_Unimebel/tuli/'+f; })
+      },
+      { slug:'verdi', nazwa:'Verdi',
+        okladka: B+'/3_Unimebel/verdi/verdi-kolekcja.jpg',
+        zdjecia: ['verdi-kolekcja.jpg','verdi-sofo-naroznik-packshot.jpg','verdi-sofo-naroznik-packshot1.jpg','verdi_aranz-sofo-naroznik.jpg','verdi_sofa.jpg','verdi_sofa1.jpg','verdi_sofa2.jpg','verdi_sofa3.jpg','Group-27207.jpg','Group-27208.jpg','Mask-Group-88.jpg'].map(function(f){ return B+'/3_Unimebel/verdi/'+f; })
+      },
+    ]
+  },
+  {
+    slug:'fameg', nazwa:'Fameg',
+    opis:'Krzesła i stoły jadalniane z polskiego drewna — ponadczasowy design.',
+    okladka: B+'/4_Fameg/arch/2021_08_szum_i_rosa_1885.jpg',
+    kolekcje:[
+      { slug:'18-n', nazwa:'18-N', okladka: B+'/4_Fameg/18-n/a-18_n_01_2.jpg',
+        zdjecia: ['a-18_5_l.jpg','a-18_n_01_2.jpg','a-18_n_02.jpg','a-18_n_l_1.jpg','a-18_tap_l.jpg','b-18_tw_l.jpg'].map(function(f){ return B+'/4_Fameg/18-n/'+f; }) },
+      { slug:'alora', nazwa:'Alora A-1412', okladka: B+'/4_Fameg/alora-a-1412/alora_a-1412_1_1.jpg',
+        zdjecia: ['alora_a-1412_1_1.jpg','alora_a-1412_2_1.jpg','alora_a-1412_3.jpg','alora_a-1412_4.jpg','alora_bst-1412_l.jpg'].map(function(f){ return B+'/4_Fameg/alora-a-1412/'+f; }) },
+      { slug:'amada', nazwa:'Amada A-1413', okladka: B+'/4_Fameg/amada-a-1413/amada_a-1413_02_2.jpg',
+        zdjecia: ['amada_a-1413_02_2.jpg','amada_a-1413_03_2.jpg','amada_a-1413_04_2.jpg','amada_a-1413_05.jpg','amada_a-1413_l_1.jpg'].map(function(f){ return B+'/4_Fameg/amada-a-1413/'+f; }) },
+      { slug:'amada-bst', nazwa:'Amada BST-1413', okladka: B+'/4_Fameg/amada-bst-1413/amada_bst-1413_01_2.jpg',
+        zdjecia: ['amada_bst-1413_01_2.jpg','amada_bst-1413_02_2.jpg','amada_bst-1413_03.jpg','amada_bst-1413_05_1.jpg'].map(function(f){ return B+'/4_Fameg/amada-bst-1413/'+f; }) },
+      { slug:'arch', nazwa:'Arch', okladka: B+'/4_Fameg/arch/arch_b-1801_1-1.jpg',
+        zdjecia: ['arch_b-1801_1-1.jpg','arch_b-1801_2_1.jpg','arch_b-1801_3_2.jpg','arch_bm-1801.jpg','fameg_arch-5.jpg','fameg_arch-6.jpg','fameg_arch-7.jpg'].map(function(f){ return B+'/4_Fameg/arch/'+f; }) },
+      { slug:'avola', nazwa:'Avola A-1411', okladka: B+'/4_Fameg/avola-a-1411/avola_a-1411_01.jpg',
+        zdjecia: ['avola_a-1411_01.jpg','avola_a-1411_02_2.jpg','avola_a-1411_03_1.jpg','avola_a-1411_04_1.jpg','avola_a-1411_l.jpg'].map(function(f){ return B+'/4_Fameg/avola-a-1411/'+f; }) },
+      { slug:'bistro', nazwa:'Bistro', okladka: B+'/4_Fameg/bistro-1/bistro_1_a-9907-2_1.jpg',
+        zdjecia: ['bistro_1_a-9907-2_1.jpg','bistro_1_a-9907-2_2.jpg','bistro_1_a-9907-2_3_1.jpg'].map(function(f){ return B+'/4_Fameg/bistro-1/'+f; }) },
+      { slug:'cleo', nazwa:'Cleo', okladka: B+'/4_Fameg/cleo/cleo_a-1602_1_1.jpg',
+        zdjecia: ['cleo_a-1602_1_1.jpg','cleo_a-1602_2_1.jpg'].map(function(f){ return B+'/4_Fameg/cleo/'+f; }) },
+      { slug:'cleo-5', nazwa:'Cleo 5', okladka: B+'/4_Fameg/cleo-5/cleo_a-1605_1.jpg',
+        zdjecia: ['cleo_a-1605_1.jpg','cleo_a-1605_2.jpg','cleo_a-1605_3_2.jpg','cleo_a-1605_4_1.jpg'].map(function(f){ return B+'/4_Fameg/cleo-5/'+f; }) },
+      { slug:'finn', nazwa:'Finn', okladka: B+'/4_Fameg/arch/2021_08_szum_i_rosa_1885.jpg',
+        zdjecia: ['finn_a-1609_tap_01_2.jpg','finn_a-1609_tap_02_2.jpg','finn_a-1609_tap_03_2.jpg','finn_a-1609_tap_l.jpg','finn_bst-1609_1_61_l.jpg'].map(function(f){ return B+'/4_Fameg/finn/'+f; }) },
+      { slug:'nord', nazwa:'Nord A-2320', okladka: B+'/4_Fameg/nord-a-2320/nord_a-2320_tw_01_2.jpg',
+        zdjecia: ['nord-a-2320_tw_02_1.jpg','nord_a-2320_tw_01_2.jpg','nord_a-2320_tw_l_1.jpg','nord_bst-2320_tw.jpg'].map(function(f){ return B+'/4_Fameg/nord-a-2320/'+f; }) },
+      { slug:'riso', nazwa:'Riso BM-2301', okladka: B+'/4_Fameg/riso-bm-2301/riso_b-2301_01_1.jpg',
+        zdjecia: ['riso_b-2301_01_1.jpg','riso_b-2301_02.jpg','riso_b-2301_l.jpg'].map(function(f){ return B+'/4_Fameg/riso-bm-2301/'+f; }) },
+    ]
+  },
+  {
+    slug:'manufaktura-jasienica', nazwa:'Manufaktura Jasienica',
+    opis:'Stoły z litego drewna dębowego — naturalne piękno i trwałość.',
+    okladka: B+'/5_Manufaktura_Jasienica/falcon/MMJ-Falcon-stol-drewniany-debowy-rozkladany.png',
+    kolekcje:[
+      { slug:'falcon', nazwa:'Falcon', okladka: B+'/5_Manufaktura_Jasienica/falcon/MMJ-Falcon-stol-drewniany-debowy-rozkladany.png',
+        zdjecia: [B+'/5_Manufaktura_Jasienica/falcon/MMJ-Falcon-stol-drewniany-debowy-rozkladany.png',B+'/5_Manufaktura_Jasienica/falcon/MMJ-Falcon-stol-drewniany-debowy-rozkladany_2.png'] },
+      { slug:'loom', nazwa:'Loom', okladka: B+'/5_Manufaktura_Jasienica/loom/MMJ-Loom-stol-drewniany-debowy-rozkladany_3.png',
+        zdjecia: [B+'/5_Manufaktura_Jasienica/loom/MMJ-Loom-stol-drewniany-debowy-rozkladany_3.png',B+'/5_Manufaktura_Jasienica/loom/MMJ-Loom-stol-drewniany-debowy-rozkladany_4.png'] },
+      { slug:'quadro', nazwa:'Quadro', okladka: B+'/5_Manufaktura_Jasienica/quadro/MMJ_A_Quadro_2.png',
+        zdjecia: [B+'/5_Manufaktura_Jasienica/quadro/MMJ_A_Quadro_2.png',B+'/5_Manufaktura_Jasienica/quadro/MMJ_A_Quadro_4.png'] },
+      { slug:'a-scudo-ii', nazwa:'A-Scudo II', okladka: B+'/5_Manufaktura_Jasienica/a-scudo-ii/MMJ_A-SCUDO_2_4.jpg',
+        zdjecia: ['MMJ_A-SCUDO_2.jpg','MMJ_A-SCUDO_2_1.jpg','MMJ_A-SCUDO_2_2.jpg','MMJ_A-SCUDO_2_4.jpg'].map(function(f){ return B+'/5_Manufaktura_Jasienica/a-scudo-ii/'+f; }) },
+    ]
+  },
+  {
+    slug:'paged', nazwa:'Paged Meble',
+    opis:'Nowoczesne krzesła o wyjątkowym wzornictwie.',
+    okladka: B+'/6_Paged/dot-a-dot/Paged_DOT_70mm_42748.png',
+    kolekcje:[
+      { slug:'dot-a-dot', nazwa:'Dot A-Dot', okladka: B+'/6_Paged/dot-a-dot/Paged_DOT_70mm_42748.png',
+        zdjecia: [B+'/6_Paged/dot-a-dot/Paged_DOT_70mm_42748.png'] },
+    ]
+  },
+  {
+    slug:'sweetsit', nazwa:'Sweet Sit',
+    opis:'Narożniki i sofy z charakterem — komfort i styl do każdego wnętrza.',
+    okladka: B+'/7_SweetSit/naroznik-cloud/cloud.jpg',
+    kolekcje:[
+      { slug:'bergen', nazwa:'Narożnik Bergen', okladka: B+'/7_SweetSit/naroznik-bergen/6367-Bergen.jpg',
+        zdjecia: ['6367-Bergen.jpg','6369-Bergen.jpg','6371-Bergen.jpg','6373-Bergen.jpg','6379-Bergen.jpg','6380-Bergen.jpg','6382-Bergen.jpg','6385-Bergen.jpg'].map(function(f){ return B+'/7_SweetSit/naroznik-bergen/'+f; }) },
+      { slug:'cloud', nazwa:'Narożnik Cloud', okladka: B+'/7_SweetSit/naroznik-cloud/cloud.jpg',
+        zdjecia: ['Cloud-2-Puente-33-scaled.jpg','Cloud-3-Puente-33-scaled.jpg','Cloud-4-Puente-33-scaled.jpg','Cloud-5-Puente-33-scaled.jpg','cloud.jpg'].map(function(f){ return B+'/7_SweetSit/naroznik-cloud/'+f; }) },
+      { slug:'comfy', nazwa:'Narożnik Comfy', okladka: B+'/7_SweetSit/naroznik-comfy/comfy.jpg',
+        zdjecia: ['Comfy-1-scaled.jpg','Comfy-2-scaled.jpg','Comfy-3-scaled.jpg','Comfy-4-scaled.jpg','comfy.jpg'].map(function(f){ return B+'/7_SweetSit/naroznik-comfy/'+f; }) },
+      { slug:'dream', nazwa:'Narożnik Dream', okladka: B+'/7_SweetSit/naroznik-dream/dream.jpg',
+        zdjecia: ['Dream-1-scaled.jpg','Dream-2-scaled.jpg','Dream-3-scaled.jpg','dream.jpg'].map(function(f){ return B+'/7_SweetSit/naroznik-dream/'+f; }) },
+      { slug:'ema', nazwa:'Sofa Ema', okladka: B+'/7_SweetSit/sofa-ema/ema.jpg',
+        zdjecia: ['5384-Ema-Enjoy-19.jpg','ema.jpg','sweet_sit_sofa_ema_1.jpg','sweet_sit_sofa_ema_2.jpg','sweet_sit_sofa_ema_3.jpg'].map(function(f){ return B+'/7_SweetSit/sofa-ema/'+f; }) },
+    ]
+  },
+  {
+    slug:'gala-collezione', nazwa:'Gala Collezione',
+    opis:'Systemy modułowe i sofy najwyższej klasy — włoski styl.',
+    okladka: B+'/8_Gala_Collezione/system-modulowy-karato/karato.jpg',
+    kolekcje:[
+      { slug:'ombra', nazwa:'Ombra', okladka: B+'/8_Gala_Collezione/ombra/5.png',
+        zdjecia: ['5.png','10.png','11-1.png','13-1.png','14-1.png','15-1.png','16-1.png','17-1.png','18-1.png'].map(function(f){ return B+'/8_Gala_Collezione/ombra/'+f; }) },
+      { slug:'monday', nazwa:'Sofa Monday', okladka: B+'/8_Gala_Collezione/sofa-monday/monday.jpg',
+        zdjecia: ['monday.jpg','gala_collezione_sofa_monday_1.jpg','gala_collezione_sofa_monday_2.jpg','gala_collezione_sofa_monday_3.jpg','gala_collezione_sofa_monday_4.jpg','gala_collezione_sofa_monday_5.jpg','gala_collezione_sofa_monday_6.jpg'].map(function(f){ return B+'/8_Gala_Collezione/sofa-monday/'+f; }) },
+      { slug:'voss', nazwa:'Sofa Voss', okladka: B+'/8_Gala_Collezione/sofa-voss/voss.jpg',
+        zdjecia: ['voss.jpg','gala_collezione_sofa_dwuosobowa_voss_4.jpg','gala_collezione_sofa_dwuosobowa_voss_5.jpg','gala_collezione_sofa_trzyosobowa_voss_1.jpg','gala_collezione_sofa_trzyosobowa_voss_3.jpg'].map(function(f){ return B+'/8_Gala_Collezione/sofa-voss/'+f; }) },
+      { slug:'aria', nazwa:'System Aria', okladka: B+'/8_Gala_Collezione/system-modulowy-aria/ARIA-1-scaled.jpg',
+        zdjecia: ['ARIA-1-scaled.jpg','ARIA-2-scaled.jpg','ARIA-3-scaled.jpg','ARIA-4-scaled.jpg','ARIA-5-scaled.jpg'].map(function(f){ return B+'/8_Gala_Collezione/system-modulowy-aria/'+f; }) },
+      { slug:'karato', nazwa:'System Karato', okladka: B+'/8_Gala_Collezione/system-modulowy-karato/karato.jpg',
+        zdjecia: ['karato.jpg','system_modulowy_karato_1.jpg','system_modulowy_karato_2.jpg','system_modulowy_karato_3.jpg'].map(function(f){ return B+'/8_Gala_Collezione/system-modulowy-karato/'+f; }) },
+      { slug:'loggia', nazwa:'System Loggia', okladka: B+'/8_Gala_Collezione/system-modulowy-loggia/system_modulowy_loggia_gala_collezione_01.jpg',
+        zdjecia: [1,2,3,4,5,6,7,8,9].map(function(n){ return B+'/8_Gala_Collezione/system-modulowy-loggia/system_modulowy_loggia_gala_collezione_0'+n+'.jpg'; }) },
+      { slug:'look', nazwa:'System Look', okladka: B+'/8_Gala_Collezione/system-modulowy-look/gala_collezione_system_modulowy_look_1.jpg',
+        zdjecia: ['gala_collezione_system_modulowy_look_1.jpg','gala_collezione_system_modulowy_look_2.jpg','gala_collezione_system_modulowy_look_5.jpg','gala_collezione_system_modulowy_look_6.jpg','gala_collezione_system_modulowy_look_8.jpg'].map(function(f){ return B+'/8_Gala_Collezione/system-modulowy-look/'+f; }) },
+      { slug:'lorens', nazwa:'System Lorens', okladka: B+'/8_Gala_Collezione/system-modulowy-lorens/lorens.jpg',
+        zdjecia: ['lorens.jpg'].map(function(f){ return B+'/8_Gala_Collezione/system-modulowy-lorens/'+f; }) },
+      { slug:'volta', nazwa:'System Volta', okladka: B+'/8_Gala_Collezione/system-modulowy-volta/gala_collezione_sytstem_modulowy_volta-1.jpg',
+        zdjecia: [1,2,3,4,5,7,8,9,10].map(function(n){ return B+'/8_Gala_Collezione/system-modulowy-volta/gala_collezione_sytstem_modulowy_volta-'+n+'.jpg'; }) },
+    ]
+  },
+];
+
+/* ===== STATE ===== */
+var state = { view: 'producers', producent: null, kolekcja: null };
+
+/* ===== RENDER ===== */
+function render() {
+  var container = document.getElementById('content-container');
+  var hero = document.getElementById('page-hero');
+
+  window.scrollTo(0, 0);
+
+  if (state.view === 'gallery' && state.producent && state.kolekcja) {
+    renderGallery(container);
+  } else if (state.view === 'collections' && state.producent) {
+    renderCollections(container);
+  } else {
+    renderProducers(container);
+  }
+
+  // Re-init fade-in for newly rendered elements
+  setTimeout(function() {
+    var els = container.querySelectorAll('.fade-in:not(.visible)');
+    els.forEach(function(el) { el.classList.add('visible'); });
+  }, 50);
+}
+
+function setHero(title, subtitle, crumbs) {
+  document.getElementById('hero-title').textContent = title;
+  document.getElementById('hero-subtitle').textContent = subtitle || '';
+  var bc = document.getElementById('breadcrumb');
+  bc.innerHTML = crumbs.map(function(c, i) {
+    var isLast = i === crumbs.length - 1;
+    if (isLast) return '<span class="text-cream/70">' + c.label + '</span>';
+    return '<a href="' + (c.href||'#') + '">' + c.label + '</a><span>/</span>';
+  }).join('');
+}
+
+/* VIEW 1: Producers grid */
+function renderProducers(container) {
+  setHero('Nasze Kolekcje', 'Odkryj wyjątkowe zestawy wypoczynkowe najlepszych producentów', [
+    {label:'Strona główna', href:'index.html'}, {label:'Kolekcje'}
+  ]);
+  var html = '<div class="collection-grid">';
+  producenci.forEach(function(p) {
+    html += '<div class="card fade-in cursor-pointer" onclick="goToCollections(\''+p.slug+'\')">'+
+      '<div class="card-img" style="aspect-ratio:16/9">'+
+        '<img src="'+p.okladka+'" alt="'+p.nazwa+'" loading="lazy">'+
+      '</div>'+
+      '<div class="p-6">'+
+        '<span class="inline-block bg-[#c9a84c]/15 text-[#c9a84c] text-xs font-semibold px-3 py-1 rounded-full">'+p.kolekcje.length+' kolekcji</span>'+
+        '<h3 class="font-heading text-2xl font-bold text-navy mt-3">'+p.nazwa+'</h3>'+
+        '<p class="mt-2 text-gray-500 text-sm">'+p.opis+'</p>'+
+        '<div class="mt-4 flex flex-wrap gap-3">'+
+          '<button class="btn-secondary" onclick="event.stopPropagation();goToCollections(\''+p.slug+'\')">Zobacz kolekcje</button>'+
+          '<a href="kontakt.html" class="btn-gold text-sm py-2 px-4" onclick="event.stopPropagation()">Zapytaj o produkt</a>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  });
+  html += '</div>';
+  html += '<div class="mt-16 text-center bg-navy rounded-2xl p-10 fade-in">'+
+    '<h3 class="font-heading text-2xl font-bold text-cream">Nie znalazłeś czegoś dla siebie?</h3>'+
+    '<p class="mt-2 text-cream/60">Skontaktuj się z nami — pomożemy Ci znaleźć idealne meble!</p>'+
+    '<a href="kontakt.html" class="btn-gold mt-6 inline-flex">Skontaktuj się z nami</a>'+
+  '</div>';
+  container.innerHTML = html;
+}
+
+/* VIEW 2: Collections of a producer */
+function renderCollections(container) {
+  var p = state.producent;
+  setHero(p.nazwa, p.opis, [
+    {label:'Strona główna', href:'index.html'}, {label:'Kolekcje', href:'kolekcje.html'}, {label: p.nazwa}
+  ]);
+  var html = '<div class="mb-10"><button class="btn-secondary" onclick="goToProducers()">← Powrót do producentów</button></div>';
+  html += '<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">';
+  p.kolekcje.forEach(function(k) {
+    html += '<div class="card fade-in cursor-pointer" onclick="goToGallery(\''+k.slug+'\')">'+
+      '<div class="card-img" style="aspect-ratio:16/9">'+
+        '<img src="'+k.okladka+'" alt="'+k.nazwa+'" loading="lazy">'+
+      '</div>'+
+      '<div class="p-5">'+
+        '<h3 class="font-heading text-xl font-bold text-navy">'+k.nazwa+'</h3>'+
+        '<p class="mt-1 text-sm text-gray-500">'+k.zdjecia.length+' zdjęć</p>'+
+        '<button class="btn-secondary mt-4 text-sm" onclick="event.stopPropagation();goToGallery(\''+k.slug+'\')">Zobacz kolekcję</button>'+
+      '</div>'+
+    '</div>';
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+/* VIEW 3: Photo gallery */
+function renderGallery(container) {
+  var p = state.producent;
+  var k = state.kolekcja;
+  var useContain = CONTAIN.indexOf(p.slug) !== -1;
+  setHero(k.nazwa, 'Kolekcja '+p.nazwa, [
+    {label:'Strona główna', href:'index.html'}, {label:'Kolekcje', href:'kolekcje.html'}, {label:p.nazwa, href:'#'}, {label:k.nazwa}
+  ]);
+  var html = '<div class="mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">'+
+    '<button class="btn-secondary" onclick="goToCollections(null)">← Powrót do '+p.nazwa+'</button>'+
+  '</div>';
+  html += '<div class="collection-gallery-grid">';
+  k.zdjecia.forEach(function(src, i) {
+    var imgClass = useContain
+      ? 'w-full h-64 object-contain bg-white p-4 transition-transform duration-700 group-hover:scale-105'
+      : 'w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105';
+    var wrapClass = useContain ? 'bg-white rounded-3xl shadow-md' : 'overflow-hidden rounded-3xl bg-white shadow-md';
+    html += '<div class="'+wrapClass+' group cursor-zoom-in hover:shadow-xl transition-shadow duration-500 fade-in" style="transition-delay:'+(i*0.03)+'s" onclick="openLightbox(\''+src.replace(/'/g,"\\'")+'\')" >'+
+      '<img src="'+src+'" alt="'+k.nazwa+' '+(i+1)+'" class="'+imgClass+'" loading="lazy">'+
+    '</div>';
+  });
+  html += '</div>';
+  html += '<div class="mt-10 text-center"><a href="kontakt.html" class="btn-gold">Zapytaj o kolekcję '+k.nazwa+'</a></div>';
+  container.innerHTML = html;
+}
+
+/* ===== NAVIGATION ===== */
+function goToProducers() {
+  state = { view:'producers', producent:null, kolekcja:null };
+  render();
+}
+function goToCollections(slug) {
+  if (slug) {
+    state.producent = producenci.find(function(p){ return p.slug===slug; }) || state.producent;
+  }
+  state.view = 'collections';
+  state.kolekcja = null;
+  render();
+}
+function goToGallery(slug) {
+  state.kolekcja = state.producent.kolekcje.find(function(k){ return k.slug===slug; }) || null;
+  if (state.kolekcja) { state.view = 'gallery'; render(); }
+}
+
+/* ===== INIT ===== */
+render();
+</script>
+</body>
+</html>
