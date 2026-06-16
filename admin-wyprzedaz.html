@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Panel — Wyprzedaż | Prestige Meble Toruń</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { navy: '#1a1f3a', gold: '#c9a84c', cream: '#f7f3ee' },
+        },
+      },
+    }
+  </script>
+  <style>body{font-family:Inter,sans-serif}</style>
+</head>
+<body class="bg-cream min-h-screen flex items-center justify-center p-4">
+
+  <div id="login-screen" class="w-full max-w-sm bg-white rounded-xl shadow-xl p-8">
+    <h1 class="text-xl font-bold text-navy mb-6 text-center">Panel — Wyprzedaż</h1>
+    <input id="password-input" type="password" placeholder="Hasło" class="w-full border rounded-lg px-4 py-3 mb-4 focus:outline-none focus:ring-2 focus:ring-gold">
+    <button id="login-btn" class="w-full bg-navy text-white font-semibold py-3 rounded-lg hover:bg-navy/90">Zaloguj</button>
+    <p id="login-error" class="text-red-500 text-sm mt-3 text-center hidden">Nieprawidłowe hasło</p>
+  </div>
+
+  <div id="form-screen" class="hidden w-full max-w-lg bg-white rounded-xl shadow-xl p-8">
+    <h1 class="text-xl font-bold text-navy mb-6">Edytuj aktualną wyprzedaż</h1>
+
+    <label class="block text-sm font-medium text-navy mb-1">Tytuł promocji</label>
+    <input id="title-input" type="text" class="w-full border rounded-lg px-4 py-3 mb-4 focus:outline-none focus:ring-2 focus:ring-gold" placeholder="np. Fameg -21% rabat na wszystko">
+
+    <label class="block text-sm font-medium text-navy mb-1">Opis</label>
+    <textarea id="description-input" rows="3" class="w-full border rounded-lg px-4 py-3 mb-4 focus:outline-none focus:ring-2 focus:ring-gold" placeholder="Krótki opis promocji"></textarea>
+
+    <label class="block text-sm font-medium text-navy mb-1">Zdjęcie (opcjonalnie — zostaw puste, żeby zachować obecne)</label>
+    <input id="image-input" type="file" accept="image/*" class="w-full mb-4">
+    <img id="image-preview" class="hidden w-full rounded-lg mb-4 border" alt="Podgląd">
+
+    <button id="save-btn" class="w-full bg-gold text-navy font-bold py-3 rounded-lg hover:bg-gold/90">Zapisz zmiany</button>
+    <p id="save-status" class="text-sm mt-3 text-center"></p>
+  </div>
+
+  <script>
+    const loginScreen = document.getElementById('login-screen');
+    const formScreen = document.getElementById('form-screen');
+    const passwordInput = document.getElementById('password-input');
+    const loginBtn = document.getElementById('login-btn');
+    const loginError = document.getElementById('login-error');
+    const titleInput = document.getElementById('title-input');
+    const descriptionInput = document.getElementById('description-input');
+    const imageInput = document.getElementById('image-input');
+    const imagePreview = document.getElementById('image-preview');
+    const saveBtn = document.getElementById('save-btn');
+    const saveStatus = document.getElementById('save-status');
+
+    let password = '';
+    let currentImage = '';
+    let imageBase64 = '';
+    let imageName = '';
+
+    async function loadCurrentSale() {
+      try {
+        const res = await fetch('sale.json?t=' + Date.now());
+        const data = await res.json();
+        titleInput.value = data.title || '';
+        descriptionInput.value = data.description || '';
+        currentImage = data.image || '';
+        if (currentImage) {
+          imagePreview.src = currentImage;
+          imagePreview.classList.remove('hidden');
+        }
+      } catch (err) {
+        // brak danych startowych — formularz pozostaje pusty
+      }
+    }
+
+    loginBtn.addEventListener('click', async () => {
+      if (!passwordInput.value) return;
+      password = passwordInput.value;
+      loginError.classList.add('hidden');
+      loginScreen.classList.add('hidden');
+      formScreen.classList.remove('hidden');
+      await loadCurrentSale();
+    });
+
+    passwordInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') loginBtn.click();
+    });
+
+    imageInput.addEventListener('change', () => {
+      const file = imageInput.files[0];
+      if (!file) return;
+      imageName = file.name;
+      const reader = new FileReader();
+      reader.onload = () => {
+        imageBase64 = reader.result;
+        imagePreview.src = imageBase64;
+        imagePreview.classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+    });
+
+    saveBtn.addEventListener('click', async () => {
+      if (!titleInput.value || !descriptionInput.value) {
+        saveStatus.textContent = 'Wypełnij tytuł i opis';
+        saveStatus.className = 'text-sm mt-3 text-center text-red-500';
+        return;
+      }
+      saveBtn.disabled = true;
+      saveStatus.textContent = 'Zapisywanie...';
+      saveStatus.className = 'text-sm mt-3 text-center text-navy';
+
+      try {
+        const res = await fetch('/api/save-sale', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            password,
+            title: titleInput.value,
+            description: descriptionInput.value,
+            currentImage,
+            imageBase64: imageBase64 || undefined,
+            imageName: imageName || undefined,
+          }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Błąd zapisu');
+
+        saveStatus.textContent = 'Zapisano! Zmiany będą widoczne na stronie za ok. 30 sekund.';
+        saveStatus.className = 'text-sm mt-3 text-center text-green-600';
+        if (data.sale && data.sale.image) currentImage = data.sale.image;
+        imageBase64 = '';
+        imageName = '';
+      } catch (err) {
+        if (err.message.includes('401') || err.message.includes('Nieprawidłowe')) {
+          saveStatus.textContent = 'Nieprawidłowe hasło — odśwież stronę i zaloguj się ponownie';
+        } else {
+          saveStatus.textContent = 'Błąd: ' + err.message;
+        }
+        saveStatus.className = 'text-sm mt-3 text-center text-red-500';
+      } finally {
+        saveBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
